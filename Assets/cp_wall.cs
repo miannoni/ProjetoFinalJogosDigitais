@@ -23,9 +23,11 @@ public class cp_wall : MonoBehaviour
         if (active)
         {
             GetComponent<MeshRenderer>().material.color = new Color(0, 255, 0);
+            GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(0, 255, 0));
         } else
         {
             GetComponent<MeshRenderer>().material.color = new Color(255, 255, 255);
+            GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", new Color(255, 255, 255));
         }
     }
 
