@@ -49,7 +49,7 @@ public class TerrainScript : MonoBehaviour
             {
                 
 
-                if ((player.transform.position - new Vector3(x*(t.terrainData.size.x / t.terrainData.detailResolution),0.5f,y*(t.terrainData.size.z / t.terrainData.detailResolution))).magnitude < 0.5f)
+                if ((player.transform.position - new Vector3(x*(t.terrainData.size.x / t.terrainData.detailResolution),0.5f,y*(t.terrainData.size.z / t.terrainData.detailResolution))).magnitude < 2f)
                 {
                     //print("Log");
                     //print(x);
@@ -63,7 +63,7 @@ public class TerrainScript : MonoBehaviour
                     grassHeight[y, x] = 0;
                     //grassHeight[y, x] = 4;
 
-                } else //if (grassHeight[y, x] <= initialGrassHeight[x, y])
+                } else if (grassHeight[y, x] <= initialGrassHeight[x, y])
                 {
                     //grassHeight[y, x] = 0;
                     grassHeight[y, x] += grassGrowthRate*Time.deltaTime; // funcao da grama
@@ -79,5 +79,9 @@ public class TerrainScript : MonoBehaviour
 
     }
 
+    void OnDestroy()
+    {
+        t.terrainData.SetDetailLayer(0, 0, 0, initialGrassHeight);
+    }
 
 }

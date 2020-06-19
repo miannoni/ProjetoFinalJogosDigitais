@@ -6,7 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     public float MaxSpeed = 20; // velocidade do jogador
     public float gravity = -9.8f; // valor da gravidade
+    public float rotate_speed = 70;
     public float smoothingConstant = 0.5f;
+    public float grass_speed = 5;
     float speed;
     float to;
     float grassBoost = 0;
@@ -14,10 +16,10 @@ public class PlayerController : MonoBehaviour
     CharacterController character;
     Vector3 velocity;
     bool isGrounded;
+
     void Start()
     {
         character = gameObject.GetComponent<CharacterController>();
-
     }
 
     void Update()
@@ -38,10 +40,9 @@ public class PlayerController : MonoBehaviour
 
         to = (z * (MaxSpeed + grassBoost)) * Time.deltaTime;
         speed = Mathf.SmoothStep((float) velocity.x, (float) to, Time.deltaTime);
-        //speed = (() - velocity.x * smoothingConstant));
-        //print(speed);
+
         // Rotaciona personagem
-        transform.Rotate(0, x * 70 * Time.deltaTime, 0);
+        transform.Rotate(0, x * rotate_speed * Time.deltaTime, 0);
 
         // Move personagem
         Vector3 move = transform.forward * speed;
@@ -56,6 +57,6 @@ public class PlayerController : MonoBehaviour
 
     public void Grass(float grass)
     {
-        grassBoost = grass*grass/3;
+        grassBoost = ((grassBoost + grass)/2)*grass_speed;
     }
 }
