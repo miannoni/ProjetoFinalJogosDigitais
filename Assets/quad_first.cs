@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class quad_first : MonoBehaviour
 {
-    private bool am_active = false;
+
+    public GameObject parent;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //parent = transform.parent.gameObject;
+        //print(parent);
     }
 
     // Update is called once per frame
@@ -18,16 +20,13 @@ public class quad_first : MonoBehaviour
         
     }
 
-    void isActive(bool active)
+    private void OnTriggerEnter(Collider other)
     {
-        am_active = active;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (am_active)
+        if (other.gameObject.tag == "Racer")
         {
-            if (collision.gameObject)
+            print("colidiu");
+            parent.SendMessage("has_passed", other.gameObject);
         }
     }
+
 }

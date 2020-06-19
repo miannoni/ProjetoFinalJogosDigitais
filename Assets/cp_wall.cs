@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class cp_wall : MonoBehaviour
 {
-    private GameObject parent;
+    public GameObject parent;
     // Start is called before the first frame update
     void Start()
     {
-        parent = transform.parent.gameObject;
+        //parent = transform.parent.gameObject;
+        //print(parent);
     }
 
     // Update is called once per frame
@@ -21,15 +22,15 @@ public class cp_wall : MonoBehaviour
     {
         if (active)
         {
-            GetComponent<Material>().color = new Color(0, 255, 0);
+            GetComponent<MeshRenderer>().material.color = new Color(0, 255, 0);
         } else
         {
-            GetComponent<Material>().color = new Color(255, 255, 255);
+            GetComponent<MeshRenderer>().material.color = new Color(255, 255, 255);
         }
     }
 
     void has_passed(GameObject player)
     {
-        parent.SendMessage("has_passed");
+        parent.SendMessage("has_passed", player);
     }
 }

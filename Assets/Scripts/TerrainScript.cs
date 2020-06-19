@@ -9,17 +9,16 @@ public class TerrainScript : MonoBehaviour
     private float [,] grassHeight;
     public float grassGrowthRate = 0.1f;
     private int [,] initialGrassHeight;
-    //public int detailResolution = 360;
+    //public int grass_type = 1;
     //PlayerController pc;
 
     // Start is called before the first frame update
     void Start()
     {
-        print(t.terrainData.detailHeight);
-        print(t.terrainData.detailWidth);
+        //print(t.terrainData.detailHeight);
+        //print(t.terrainData.detailWidth);
         var map = t.terrainData.GetDetailLayer(0, 0,
           t.terrainData.detailWidth, t.terrainData.detailHeight, 0);
-
         initialGrassHeight = map;
 
         grassHeight = new float[t.terrainData.detailHeight, t.terrainData.detailWidth];
@@ -49,7 +48,7 @@ public class TerrainScript : MonoBehaviour
             {
                 
 
-                if ((player.transform.position - new Vector3(x*(t.terrainData.size.x / t.terrainData.detailResolution),0.5f,y*(t.terrainData.size.z / t.terrainData.detailResolution))).magnitude < 2f)
+                if ((player.transform.position - new Vector3(x*(t.terrainData.size.x / t.terrainData.detailResolution), player.transform.position.y , y*(t.terrainData.size.z / t.terrainData.detailResolution))).magnitude < 2f)
                 {
                     //print("Log");
                     //print(x);

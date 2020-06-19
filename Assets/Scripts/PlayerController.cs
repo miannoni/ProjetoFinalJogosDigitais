@@ -19,13 +19,18 @@ public class PlayerController : MonoBehaviour
     private int current_cp = 0;
     private int max_cp;
     private GameObject[] cps;
-    private int current_lap = 0;
+    public int current_lap = 0;
 
     void Start()
     {
         cps = GameObject.FindGameObjectsWithTag("checkpoint");
+        foreach (GameObject cp in cps)
+        {
+            cp.SendMessage("set_current_cp", current_cp);
+        }
         max_cp = cps.Length;
         character = gameObject.GetComponent<CharacterController>();
+
     }
 
     void Update()
@@ -66,18 +71,21 @@ public class PlayerController : MonoBehaviour
         grassBoost = ((grassBoost + grass)/2)*grass_speed;
     }
 
-    void has_passed()
+    void has_passed(int cp_pass)
     {
-        current_cp = (current_cp + 1) % max_cp;
-
-        if (current_cp == 0)
+        if (cp_pass == current_cp)
         {
-            current_lap += 1;
-        }
+            current_cp = (current_cp + 1) % max_cp;
 
-        foreach (GameObject cp in cps)
-        {
-            cp.SendMessage("set_current_cp", current_cp);
+            if (current_cp == 0)
+            {
+                current_lap += 1;
+            }
+
+            foreach (GameObject cp in cps)
+            {
+                cp.SendMessage("set_current_cp", current_cp);
+            }
         }
 
     }
