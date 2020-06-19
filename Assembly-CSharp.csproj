@@ -65,6 +65,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\TerrainScript.cs" />
+    <Compile Include="Assets\checkpoint.cs" />
+    <Compile Include="Assets\cp_wall.cs" />
+    <Compile Include="Assets\quad_first.cs" />
+    <Compile Include="Assets\quad_last.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/matte/Documents/Insper/Semestre_7/Jogos Digitais/Asteroids3D/CorridaDeGrama/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
