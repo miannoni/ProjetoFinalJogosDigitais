@@ -16,9 +16,15 @@ public class PlayerController : MonoBehaviour
     CharacterController character;
     Vector3 velocity;
     bool isGrounded;
+    private int current_cp = 0;
+    private int max_cp;
+    private GameObject[] cps;
+    private int current_lap = 0;
 
     void Start()
     {
+        cps = GameObject.FindGameObjectsWithTag("checkpoint");
+        max_cp = cps.Length;
         character = gameObject.GetComponent<CharacterController>();
     }
 
@@ -58,5 +64,21 @@ public class PlayerController : MonoBehaviour
     public void Grass(float grass)
     {
         grassBoost = ((grassBoost + grass)/2)*grass_speed;
+    }
+
+    void has_passed()
+    {
+        current_cp = (current_cp + 1) % max_cp;
+
+        if (current_cp == 0)
+        {
+            current_lap += 1;
+        }
+
+        foreach (GameObject cp in cps)
+        {
+            cp.SendMessage("set_current_cp", current_cp);
+        }
+
     }
 }
