@@ -290,7 +290,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -10}
+  m_LocalPosition: {x: 0, y: 2, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1653440640}
@@ -322,8 +322,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1653440639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 100, y: 0, z: 100}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 2314998975443688835}
   - {fileID: 963194228}
@@ -342,8 +342,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a388151918306a542b55928c80703e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
+  MaxSpeed: 20
   gravity: -9.8
+  smoothingConstant: 0.1
   groundMask:
     serializedVersion: 2
     m_Bits: 0
@@ -409,7 +410,7 @@ Terrain:
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 134
+  m_DetailObjectDistance: 250
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
@@ -457,6 +458,7 @@ MonoBehaviour:
   t: {fileID: 1940122194}
   player: {fileID: 1653440639}
   grassGrowthRate: 0.1
+  detailResolution: 256
 --- !u!4 &675559178169991735
 Transform:
   m_ObjectHideFlags: 0
@@ -676,7 +678,7 @@ Transform:
   m_GameObject: {fileID: 1620133224332144528}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 925425246670267885}
   - {fileID: 5707942831989708864}
