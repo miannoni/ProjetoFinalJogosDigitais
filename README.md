@@ -11,3 +11,6 @@
 ### Controlando o jogo:
 Para controlar o menu, utilize ws ou as setas pra cima e pra baixo e enter.
 Para controlar o personagem na corrida use wasd/setas e pressione 'p' pra pausar o jogo.
+
+### Link no itch.io
+https://itch.io/jam/projeto-final-20201
